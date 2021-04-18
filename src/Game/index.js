@@ -6,7 +6,7 @@ function Game() {
   return (
     <div>
       <SpinWheel />
-      <Recorder />
+      {/* <Recorder /> */}
     </div>
   );
 }

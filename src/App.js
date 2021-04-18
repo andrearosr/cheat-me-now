@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Game } from './Game/index';
+import Footer from './images/footer.svg';
 import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1>Cheat Me Now!</h1>
-      <Game />
-    </div>
+    <>
+      <main className="main">
+        <h1>Cheat Me Now!</h1>
+        <Game />
+      </main>
+      <footer className="footer">
+        <img className="footer__image" src={Footer} alt="footer" />
+        <div className="footer__border"></div>
+        <div className="footer__block"></div>
+      </footer>
+    </>
   );
 }
 
