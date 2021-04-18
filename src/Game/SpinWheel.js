@@ -35,8 +35,17 @@ function SpinWheel() {
         prizeNumber={categoryIndex}
         data={data}
         onStopSpinning={onStopSpinning}
-        fontSize={40}
+        fontSize={48}
         textDistance={70}
+        perpendicularText
+        backgroundColors={['rgb(226,92,173)', 'rgb(224,65,64)', 'rgb(132,77,178)', 'rgb(241,220,95)', 'rgb(61,122,196)']}
+        outerBorderColor="rgb(98,98,98)"
+        outerBorderWidth="10"
+        innerRadius="20"
+        innerBorderWidth="2"
+        innerBorderColor="rgb(98,98,98)"
+        radiusLineWidth="2"
+        radiusLineColor="rgb(98,98,98)"
       />
       {soundClass && `${soundClass.label} ${soundClass.emoji}`}
       <button onClick={handleSpinClick}>SPIN</button>
