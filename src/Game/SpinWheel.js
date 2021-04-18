@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { findDOMNode } from 'react-dom';
 import { Wheel } from 'react-custom-roulette';
 import { soundCategories, soundClasses } from '../categories';
 import './game.css';
@@ -28,36 +29,46 @@ function SpinWheel() {
   const colors = soundCategories.map(cat => cat.color);
   const category = !spin && categoryIndex !== null && soundCategories[categoryIndex];
 
+  useEffect(() => {
+    setTimeout(() => {
+      const wheel = document.querySelector('.spin-wheel__wrapper > div');
+      wheel.style.width = '350px';
+      wheel.style.height = '350px';
+    }, 200);
+  }, []);
+
   return (
-    <div className="spin-wheel">
-      {!!category && (
-        <div class="spin-wheel__selected-category">
-          <span style={{ color: category.color }}>
-            {category.label}
-          </span>
+    <div className="game-screen">
+      <div className="spin-wheel">
+        {!!category && (
+          <div class="spin-wheel__selected-category">
+            <span style={{ color: category.color }}>
+              {category.label}
+            </span>
+          </div>
+        )}
+        <div className="spin-wheel__wrapper">
+          <Wheel
+            mustStartSpinning={spin}
+            prizeNumber={categoryIndex}
+            data={data}
+            onStopSpinning={onStopSpinning}
+            fontSize={60}
+            textDistance={65}
+            perpendicularText
+            backgroundColors={colors}
+            outerBorderColor="rgb(98,98,98)"
+            outerBorderWidth="10"
+            innerRadius="20"
+            innerBorderWidth="2"
+            innerBorderColor="rgb(98,98,98)"
+            radiusLineWidth="2"
+            radiusLineColor="rgb(98,98,98)"
+          />
+          <button className="spin-wheel__button" onClick={handleSpinClick}>SPIN</button>
         </div>
-      )}
-      <div className="spin-wheel__wrapper">
-        <Wheel
-          mustStartSpinning={spin}
-          prizeNumber={categoryIndex}
-          data={data}
-          onStopSpinning={onStopSpinning}
-          fontSize={60}
-          textDistance={65}
-          perpendicularText
-          backgroundColors={colors}
-          outerBorderColor="rgb(98,98,98)"
-          outerBorderWidth="10"
-          innerRadius="20"
-          innerBorderWidth="2"
-          innerBorderColor="rgb(98,98,98)"
-          radiusLineWidth="2"
-          radiusLineColor="rgb(98,98,98)"
-        />
-        <button className="spin-wheel__button" onClick={handleSpinClick}>SPIN</button>
+        {/* {soundClass && `${soundClass.label} ${soundClass.emoji}`} */}
       </div>
-      {/* {soundClass && `${soundClass.label} ${soundClass.emoji}`} */}
     </div>
   );
 }

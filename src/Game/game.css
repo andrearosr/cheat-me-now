@@ -1,3 +1,8 @@
+.game-screen {
+  display: flex;
+  flex: 1;
+}
+
 .spin-wheel {
   position: relative;
   margin: auto;
@@ -9,6 +14,8 @@
 
 .spin-wheel__wrapper {
   position: relative;
+  width: 350px;
+  height: 350px;
 }
 
 .spin-wheel__button {
