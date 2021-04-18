@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { SpinWheel } from './SpinWheel';
-import { AudioRecorder } from './AudioRecorder';
+import { Recorder } from './Recorder';
 
 function Game() {
   return (
     <div>
       <SpinWheel />
-      <AudioRecorder />
+      <Recorder />
     </div>
   );
 }
