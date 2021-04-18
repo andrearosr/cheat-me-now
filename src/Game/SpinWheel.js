@@ -25,11 +25,17 @@ function SpinWheel() {
     setSoundClass(newSoundClass);
   }
 
+  const colors = soundCategories.map(cat => cat.color);
+  const category = !spin && categoryIndex !== null && soundCategories[categoryIndex];
+
   return (
     <div className="spin-wheel">
-      {spin && <h2>What will it be?</h2>}
-      {!spin && categoryIndex !== null && (
-        <h2>{soundCategories[categoryIndex].label} {soundCategories[categoryIndex].emoji}</h2>
+      {!!category && (
+        <div class="spin-wheel__selected-category">
+          <span style={{ color: category.color }}>
+            {category.label}
+          </span>
+        </div>
       )}
       <div className="spin-wheel__wrapper">
         <Wheel
@@ -40,7 +46,7 @@ function SpinWheel() {
           fontSize={60}
           textDistance={65}
           perpendicularText
-          backgroundColors={['rgb(226,92,173)', 'rgb(224,65,64)', 'rgb(132,77,178)', 'rgb(241,220,95)', 'rgb(61,122,196)']}
+          backgroundColors={colors}
           outerBorderColor="rgb(98,98,98)"
           outerBorderWidth="10"
           innerRadius="20"
@@ -51,7 +57,7 @@ function SpinWheel() {
         />
         <button className="spin-wheel__button" onClick={handleSpinClick}>SPIN</button>
       </div>
-      {soundClass && `${soundClass.label} ${soundClass.emoji}`}
+      {/* {soundClass && `${soundClass.label} ${soundClass.emoji}`} */}
     </div>
   );
 }

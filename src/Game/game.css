@@ -1,5 +1,6 @@
 .spin-wheel {
-  height: 100%;
+  position: relative;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,4 +31,20 @@
 
 .spin-wheel__button:focus {
   outline: none;
+}
+
+.spin-wheel__selected-category {
+  position: absolute;
+  z-index: 9;
+  top: -120px;
+  width: 270px;
+  height: 180px;
+  background-image: url(../images/selected_category.svg);
+
+  font-size: 30px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+  text-align: center;
+  padding-top: 110px;
 }
