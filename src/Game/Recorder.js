@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MicrophoneIcon from './MicrophoneIcon';
 import styles from '../styles.module.css';
 const audioType = "audio/ogg";
 
-function Recorder(props) {
+function Recorder() {
   const mediaRecorder = useRef(null);
   const [time, setTime] = useState(5);
   const [recording, setRecording] = useState(false);
   const [mediaNotFound, setMediaNotFound] = useState(false);
   const [audioBlob, setAudioBlob] = useState(null);
   const [audioURL, setAudioURL] = useState(null);
-  let chunks = [];
 
   const startTimer = () => {
     const interval = setInterval(
@@ -31,24 +30,21 @@ function Recorder(props) {
 
   const startRecording = (e) => {
     e.preventDefault();
-    chunks = [];
     mediaRecorder.current.start();
     setRecording(true);
     startTimer();
   }
 
   const stopRecording = () => {
-    console.log(mediaRecorder)
-    //mediaRecorder.current.stop();
     if (mediaRecorder.current.state === 'recording') {
+      mediaRecorder.current.stop();
       setRecording(false);
-      saveAudio();
       setTime(5);
     }
   }
 
-  const saveAudio = () => {
-    const blob = new Blob(chunks, { type: audioType });
+  const saveAudio = (chunks) => {
+    const blob = new Blob([chunks], { type: audioType });
     const URL = window.URL.createObjectURL(blob);
     setAudioBlob(blob);
     setAudioURL(URL);
@@ -63,7 +59,19 @@ function Recorder(props) {
   }
 
   const handleUpload = () => {
-    // whoosh use audioBlob
+    var reader = new FileReader();
+    reader.readAsDataURL(audioBlob);
+    reader.onloadend = () => {
+      const base64 = reader.result.split(',')[1];
+      fetch('http://predict-ml.carrasco.uruit.com/audio/classification/predict/e3bdc8f8-9f9c-11eb-a09d-865c7b2bf2ae', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ format: 'ogg', base64_audio: base64 }),
+      });
+    }
   }
 
   useEffect(() => {
@@ -72,7 +80,7 @@ function Recorder(props) {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder.current = new MediaRecorder(stream, { type: audioType });
         mediaRecorder.current.ondataavailable = e => {
-          chunks.push(e.data);
+          saveAudio(e.data);
         };
       } else {
         setMediaNotFound(true);
