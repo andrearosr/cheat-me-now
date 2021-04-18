@@ -20,6 +20,23 @@ function AudioRecorder() {
 
   function handleAudioUpload(file) {
     console.log(file);
+    console.log(audioDetails);
+    let reader = new FileReader()
+    reader.onloadend = () => {
+      const base64 = reader.result.replace('data:audio/*;base64,', '');
+      //console.log(reader.result);
+      fetch('http://predict-ml.carrasco.uruit.com/audio/classification/predict/e3bdc8f8-9f9c-11eb-a09d-865c7b2bf2ae', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ format: "ogg", base64_audio: base64 })
+      });
+      // You can upload the base64 to server here.
+    }
+
+    reader.readAsDataURL(file);
   }
 
   function handleReset() {
@@ -42,10 +59,11 @@ function AudioRecorder() {
         record={true}
         title={"Start recording"}
         audioURL={audioDetails.url}
-        showUIAudio
         handleAudioStop={handleAudioStop}
         handleAudioUpload={handleAudioUpload}
         handleReset={handleReset}
+        hideHeader
+        showUIAudio
       />
     </div>
   );

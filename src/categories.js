@@ -1,62 +1,115 @@
-export const categories = [
+export const soundCategories = [
   {
-    class: 'Cat',
+    category: 'animals',
+    label: 'Animals',
+    emoji: '🦋',
+    classes: ['cat', 'dog', 'cow', 'hen', 'rooster'],
+  },
+  {
+    category: 'human',
+    label: 'Human',
+    emoji: '👩🏽',
+    classes: ['snoring', 'sneezing', 'crying'],
+  },
+  {
+    category: 'domestic',
+    label: 'Domestic',
+    emoji: '🏘️',
+    classes: ['ticking', 'clicking'],
+  },
+  {
+    category: 'urban',
+    label: 'Urban',
+    emoji: '🗽',
+    classes: ['helicopter', 'chainsaw', 'siren'],
+  },
+  {
+    category: 'nature',
+    label: 'Nature',
+    emoji: '🌵',
+    classes: ['wind', 'birds', 'water'],
+  },
+]
+
+export const soundClasses = [
+  {
+    class: 'cat',
     label: 'Cat meowing',
     emoji: '😺',
   },
   {
-    class: 'Chainsaw',
+    class: 'chainsaw',
     label: 'Chainsaw',
     emoji: '⚒️',
   },
   {
-    class: 'Snoring',
+    class: 'snoring',
     label: 'Person snoring',
     emoji: '😴',
   },
   {
-    class: 'Cow',
+    class: 'cow',
     label: 'Cow',
     emoji: '🐮',
   },
   {
-    class: 'Crying',
+    class: 'crying',
     label: 'Baby Crying',
     emoji: '🍼',
   },
   {
-    class: 'Dog',
+    class: 'dog',
     label: 'Dog barking',
     emoji: '🐶',
   },
   {
-    class: 'Helicopter',
+    class: 'helicopter',
     label: 'Helicopter',
     emoji: '🚁',
   },
   {
-    class: 'Hen',
+    class: 'hen',
     label: 'Hen',
     emoji: '🥚',
   },
   {
-    class: 'Siren',
+    class: 'siren',
     label: 'Siren',
     emoji: '🚨',
   },
   {
-    class: 'Sneezing',
+    class: 'sneezing',
     label: 'Person Sneezing',
     emoji: '🤧',
   },
   {
-    class: 'Ticking',
+    class: 'ticking',
     label: 'Clock ticking',
     emoji: '⏱️',
   },
   {
-    class: 'Rooster',
+    class: 'rooster',
     label: 'Rooster',
     emoji: '🐓',
+  },
+  {
+    class: 'clicking',
+    label: 'Mouse clicking',
+    emoji: '🖱️',
+  },
+  {
+    class: 'wind',
+    label: 'Wind',
+    emoji: '🍃',
+  },
+  {
+    class: 'birds',
+    label: 'Chirping birds',
+    emoji: '🐦',
+  },
+  {
+    class: 'water',
+    label: 'Water drops',
+    emoji: '💧',
   },
 ];
