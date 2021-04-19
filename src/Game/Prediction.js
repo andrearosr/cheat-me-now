@@ -3,7 +3,7 @@ import Header from './Header';
 import { soundClasses } from '../categories';
 import Play from '../images/play.png';
 
-function Prediction({ soundCategory, soundClass, audioURL, prediction }) {
+function Prediction({ soundCategory, soundClass, audioURL, prediction, nextStep }) {
   const handlePlayback = () => {
     const audio = new Audio(audioURL);
     audio.play();
@@ -18,22 +18,30 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction }) {
       <Header title={soundCategory.label} color={soundCategory.color} />
       <div className="record">
         {win && (
-          <>
+          <div className="record__score-container">
+            <div className="record__title">
+              <span>Great!</span>
+            </div>
             Your score
-            {score}%
-          </>
+            <div className="record__score">
+              {score}%
+            </div>
+          </div>
         )}
         {!win && (
-          <>
+          <div className="record__score-container">
             <div className="record__title">
-              <span>{win ? "Great!" : "Oh no!"}</span>
+              <span>Oh no!</span>
             </div>
             It sounds like a<br />
             <div className="record__class">
               <span>{predictionClass.label}</span>
             </div>
-          </>
+          </div>
         )}
+        <button className="record__finish-round" onClick={nextStep}>
+          Continue
+        </button>
       </div>
       <div className="playback">
         <button className="playback__button" onClick={handlePlayback}>

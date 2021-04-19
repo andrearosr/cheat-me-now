@@ -11,6 +11,8 @@ function Game() {
   const [recordBlob, setRecordBlob] = useState(null);
   const [recordURL, setRecordURL] = useState(null);
   const [recordPrediction, setRecordPrediction] = useState(null);
+  const [round, setRound] = useState(1);
+  const [coins, setCoins] = useState(0);
 
   const goToRecord = ({ soundClass, soundCategory }) => {
     setRecordClass(soundClass);
@@ -29,12 +31,18 @@ function Game() {
     setStep(4);
   }
 
+  const goToWheel = ({ win }) => {
+    if (win) setCoins(coins + recordPrediction.confidence_score);
+    setRound(round + 1);
+    setStep(1);
+  }
+
   return (
     <>
-      {step === 1 && <SpinWheel nextStep={goToRecord} />}
+      {step === 1 && <SpinWheel round={round} coins={coins} nextStep={goToRecord} />}
       {step === 2 && <Recorder soundClass={recordClass} soundCategory={recordCategory} nextStep={goToPredict} />}
       {step === 3 && <Loading audioBlob={recordBlob} soundCategory={recordCategory} nextStep={goToResult} />}
-      {step === 4 && <Prediction audioURL={recordURL} soundCategory={recordCategory} soundClass={recordClass} prediction={recordPrediction} />}
+      {step === 4 && <Prediction audioURL={recordURL} soundCategory={recordCategory} soundClass={recordClass} prediction={recordPrediction} nextStep={goToWheel} />}
     </>
   );
 }

@@ -25,11 +25,6 @@ function Loading({ soundCategory, audioBlob, nextStep }) {
     predict();
   }, []);
 
-  // const handlePlayback = () => {
-  //   const audio = new Audio(audioURL);
-  //   audio.play();
-  // }
-
   return (
     <div className="game-screen">
       <Header title={soundCategory.label} color={soundCategory.color} />
