@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Wheel } from 'react-custom-roulette';
+import Turns from '../images/turns.png';
+import Coins from '../images/coins.png';
 import { soundCategories, soundClasses } from '../categories';
 import './game.css';
 
 const categoriesToWheel = () => soundCategories.map(cat => ({ option: cat.emoji }));
 
-function SpinWheel({ nextStep }) {
+function SpinWheel({ round, coins, nextStep }) {
   const data = categoriesToWheel();
   const [spin, setSpin] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(null);
@@ -40,6 +42,14 @@ function SpinWheel({ nextStep }) {
 
   return (
     <div className="game-screen">
+      <div className="turns">
+        <div className="turns__chip turns__round">
+          {round}
+        </div>
+        <div className="turns__chip turns__coins">
+          {coins}
+        </div>
+      </div>
       <div className="spin-wheel">
         {!!category && (
           <div className="spin-wheel__selected-category">
