@@ -13,6 +13,10 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction, nextStep 
   const predictionClass = soundClasses.find(c => c.class === prediction.result);
   const score = Math.round(prediction.confidence_score * 100);
 
+  const handleFinishRound = () => {
+    nextStep({ win });
+  }
+
   return (
     <div className="game-screen">
       <Header title={soundCategory.label} color={soundCategory.color} />
@@ -39,7 +43,7 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction, nextStep 
             </div>
           </div>
         )}
-        <button className="record__finish-round" onClick={nextStep}>
+        <button className="record__finish-round" onClick={handleFinishRound}>
           Continue
         </button>
       </div>
