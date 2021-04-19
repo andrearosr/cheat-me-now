@@ -23,7 +23,7 @@ function Loading({ soundCategory, audioBlob, nextStep }) {
     }
 
     predict();
-  }, []);
+  }, [audioBlob, nextStep]);
 
   return (
     <div className="game-screen">

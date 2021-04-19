@@ -43,19 +43,16 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
     }
   }
 
-  const saveAudio = (chunks) => {
-    const audioBlob = new Blob([chunks], { type: audioType });
-    const audioURL = window.URL.createObjectURL(audioBlob);
-    nextStep({ audioBlob, audioURL });
-  }
-
   useEffect(() => {
     const initializeRecorder = async () => {
       if (navigator.mediaDevices) {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder.current = new MediaRecorder(stream, { type: audioType });
         mediaRecorder.current.ondataavailable = e => {
-          saveAudio(e.data);
+          const chunks = e.data;
+          const audioBlob = new Blob([chunks], { type: audioType });
+          const audioURL = window.URL.createObjectURL(audioBlob);
+          nextStep({ audioBlob, audioURL });
         };
       } else {
         console.log("Media Devices will work only with SSL...");
@@ -63,7 +60,7 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
     }
 
     initializeRecorder();
-  }, []);
+  }, [nextStep]);
   
   return (
     <div className="game-screen">

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Wheel } from 'react-custom-roulette';
-import Turns from '../images/turns.png';
-import Coins from '../images/coins.png';
 import { soundCategories, soundClasses } from '../categories';
 import './game.css';
 
@@ -11,25 +9,22 @@ function SpinWheel({ round, coins, nextStep }) {
   const data = categoriesToWheel();
   const [spin, setSpin] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(null);
-  const [soundClass, setSoundClass] = useState(null);
 
   const colors = soundCategories.map(cat => cat.color);
   const category = !spin && categoryIndex !== null && soundCategories[categoryIndex];
 
   function handleSpinClick() {
     setCategoryIndex(Math.floor(Math.random() * data.length));
-    setSoundClass(null);
     setSpin(true);
   }
 
   function onStopSpinning() {
     const categoryClasses = soundCategories[categoryIndex].classes;
     const classIndex = Math.floor(Math.random() * categoryClasses.length);
-    const newSoundClass = soundClasses.find(c => c.class === categoryClasses[classIndex])
+    const soundClass = soundClasses.find(c => c.class === categoryClasses[classIndex])
     setSpin(false);
-    setSoundClass(newSoundClass);
     setTimeout(() => {
-      nextStep({ soundClass: newSoundClass, soundCategory: soundCategories[categoryIndex] });
+      nextStep({ soundClass, soundCategory: soundCategories[categoryIndex] });
     }, 3000);
   }
 

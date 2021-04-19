@@ -32,7 +32,7 @@ function Game() {
   }
 
   const goToWheel = ({ win }) => {
-    if (win) setCoins(coins + recordPrediction.confidence_score);
+    if (win) setCoins(coins + (recordPrediction.confidence_score * 1000));
     setRound(round + 1);
     setStep(1);
   }

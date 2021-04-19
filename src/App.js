@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Game } from './Game/index';
 import Footer from './images/footer.svg';
 import './App.css';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ title, color }) => {
+function Header({ title, color }) {
   return (
     <div className="header">
       <h1 className="header__title">{title}</h1>
@@ -19,4 +19,6 @@ export default ({ title, color }) => {
       </svg>
     </div>
   );
-};
+}
+
+export default Header;
