@@ -24,7 +24,7 @@ function SpinWheel({ nextStep }) {
     const newSoundClass = soundClasses.find(c => c.class === categoryClasses[classIndex])
     setSpin(false);
     setSoundClass(newSoundClass);
-    //setTimeout(nextStep, 3000);
+    setTimeout(nextStep, 3000);
   }
 
   const colors = soundCategories.map(cat => cat.color);
