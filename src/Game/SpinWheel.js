@@ -32,8 +32,10 @@ function SpinWheel() {
   useEffect(() => {
     setTimeout(() => {
       const wheel = document.querySelector('.spin-wheel__wrapper > div');
+      const img = document.querySelector('.spin-wheel__wrapper img[alt=roulette-static]');
       wheel.style.width = '350px';
       wheel.style.height = '350px';
+      img.style.display = 'none';
     }, 200);
   }, []);
 
@@ -65,6 +67,7 @@ function SpinWheel() {
             radiusLineWidth="2"
             radiusLineColor="rgb(98,98,98)"
           />
+          <div className="spin-wheel__arrow"></div>
           <button className="spin-wheel__button" onClick={handleSpinClick}>SPIN</button>
         </div>
         {/* {soundClass && `${soundClass.label} ${soundClass.emoji}`} */}
