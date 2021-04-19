@@ -33,10 +33,7 @@ function SpinWheel({ nextStep }) {
 
   useEffect(() => {
     setTimeout(() => {
-      const wheel = document.querySelector('.spin-wheel__wrapper > div');
       const img = document.querySelector('.spin-wheel__wrapper img[alt=roulette-static]');
-      wheel.style.width = '350px';
-      wheel.style.height = '350px';
       img.style.display = 'none';
     }, 0);
   }, []);

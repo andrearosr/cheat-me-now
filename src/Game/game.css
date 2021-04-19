@@ -35,8 +35,6 @@
 
 .spin-wheel__wrapper {
   position: relative;
-  width: 350px;
-  height: 350px;
 }
 
 .spin-wheel__button {
@@ -50,8 +48,8 @@
   background: radial-gradient(circle, rgba(251,251,251,1) 0%, rgba(228,228,228,1) 50%, rgba(219,219,219,1) 100%);
   border: 2px solid rgb(98,98,98);
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 85px;
+  height: 85px;
 
   color: rgb(98,98,98);
   font-size: 18px;
@@ -65,15 +63,15 @@
 .spin-wheel__arrow {
   z-index: 10;
   position: absolute;
-  top: 142px;
-  left: 186px;
-  border: 2px solid rgb(98,98,98);
+  top: 181px;
+  left: 235px;
+  border: 3px solid rgb(98,98,98);
   background: rgb(224,224,224);
-  background: linear-gradient(-45deg, rgba(228,228,228,1) 70%, rgba(230,230,230,1) 100%);
-  border-width: 0 2px 2px 0;
+  background: linear-gradient(-45deg, rgba(219,219,219,1) 20%, rgba(228,228,228,1) 60%, rgba(240,240,240,1) 100%);
+  border-width: 0 3px 3px 0;
   display: inline-block;
-  padding: 11px;
-  transform: rotate(-87deg);
+  padding: 15px;
+  transform: rotate(-85deg);
 }
 
 .spin-wheel__selected-category {
