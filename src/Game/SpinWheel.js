@@ -27,7 +27,7 @@ function SpinWheel({ nextStep }) {
     setSpin(false);
     setSoundClass(newSoundClass);
     setTimeout(() => {
-      nextStep({ soundClass: newSoundClass, soundCategory: category });
+      nextStep({ soundClass: newSoundClass, soundCategory: soundCategories[categoryIndex] });
     }, 3000);
   }
 

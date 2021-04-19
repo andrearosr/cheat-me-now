@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import MicrophoneIcon from './MicrophoneIcon';
+import Header from './Header';
 import styles from '../styles.module.css';
 const audioType = "audio/ogg";
 
@@ -93,6 +94,7 @@ function Recorder({ soundClass, soundCategory }) {
   
   return (
     <div className="game-screen">
+      <Header title={soundCategory.label} color={soundCategory.color} />
       <div className="record">
         Try to imitate the sound of a <br />
         <span className="record__class">{soundClass.label}</span>
