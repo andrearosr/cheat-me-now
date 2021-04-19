@@ -15,7 +15,7 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
         setTime(time => {
           if (time === 0) {
             clearInterval(interval);
-            //stopRecording();
+            stopRecording();
             return 5;
           } else {
             return time - 1;
@@ -46,7 +46,7 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
   const saveAudio = (chunks) => {
     const audioBlob = new Blob([chunks], { type: audioType });
     const audioURL = window.URL.createObjectURL(audioBlob);
-    //nextStep({ audioBlob, audioURL });
+    nextStep({ audioBlob, audioURL });
   }
 
   useEffect(() => {

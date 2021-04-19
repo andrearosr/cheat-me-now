@@ -14,7 +14,7 @@ button {
 
 #root {
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -33,6 +33,7 @@ button {
   display: flex;
   justify-content: center;
   height: 180px;
+  margin-top: 20px;
 }
 
 .footer__image {

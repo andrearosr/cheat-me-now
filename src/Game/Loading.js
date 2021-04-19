@@ -9,7 +9,7 @@ function Loading({ soundCategory, audioBlob, nextStep }) {
       reader.readAsDataURL(audioBlob);
       reader.onloadend = async () => {
         const base64 = reader.result.split(',')[1];
-        const res = await fetch('http://predict-ml.carrasco.uruit.com/audio/classification/predict/e3bdc8f8-9f9c-11eb-a09d-865c7b2bf2ae', {
+        const res = await fetch('http://predict-ml.carrasco.uruit.com/audio/classification/predict/b59932e0-a0ce-11eb-a9ba-865c7b2bf2ae', {
           method: 'POST',
           headers: {
             'accept': 'application/json',

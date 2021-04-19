@@ -63,8 +63,8 @@
 .spin-wheel__arrow {
   z-index: 10;
   position: absolute;
-  top: 181px;
-  left: 235px;
+  top: 182px;
+  left: 234px;
   border: 3px solid rgb(98,98,98);
   background: rgb(224,224,224);
   background: linear-gradient(-45deg, rgba(219,219,219,1) 20%, rgba(228,228,228,1) 60%, rgba(240,240,240,1) 100%);
