@@ -44,15 +44,15 @@
 .spin-wheel__arrow {
   z-index: 10;
   position: absolute;
-  top: 144px;
-  left: 187px;
+  top: 142px;
+  left: 186px;
   border: 2px solid rgb(98,98,98);
   background: rgb(224,224,224);
   background: linear-gradient(-45deg, rgba(228,228,228,1) 70%, rgba(230,230,230,1) 100%);
   border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 12px;
-  transform: rotate(-80deg);
+  padding: 11px;
+  transform: rotate(-87deg);
 }
 
 .spin-wheel__selected-category {

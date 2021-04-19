@@ -6,7 +6,7 @@ import './game.css';
 
 const categoriesToWheel = () => soundCategories.map(cat => ({ option: cat.emoji }));
 
-function SpinWheel() {
+function SpinWheel({ nextStep }) {
   const data = categoriesToWheel();
   const [spin, setSpin] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(null);
@@ -24,6 +24,7 @@ function SpinWheel() {
     const newSoundClass = soundClasses.find(c => c.class === categoryClasses[classIndex])
     setSpin(false);
     setSoundClass(newSoundClass);
+    //setTimeout(nextStep, 3000);
   }
 
   const colors = soundCategories.map(cat => cat.color);
@@ -36,14 +37,14 @@ function SpinWheel() {
       wheel.style.width = '350px';
       wheel.style.height = '350px';
       img.style.display = 'none';
-    }, 200);
+    }, 0);
   }, []);
 
   return (
     <div className="game-screen">
       <div className="spin-wheel">
         {!!category && (
-          <div class="spin-wheel__selected-category">
+          <div className="spin-wheel__selected-category">
             <span style={{ color: category.color }}>
               {category.label}
             </span>
