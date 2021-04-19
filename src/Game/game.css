@@ -150,8 +150,9 @@
 .record__predicted-class {
   text-transform: uppercase;
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 32px;
   text-shadow: 1px 1px rgba(0,0,0,0.5);
+  margin-bottom: 10px
 }
 
 .record__title {
@@ -168,7 +169,7 @@
 }
 
 .record__score-container {
-  margin: auto;
+  margin-top: 20px;
   font-size: 22px;
 }
 
