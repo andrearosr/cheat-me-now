@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Header({ title, color }) {
+  const maxWidth = 1439;
+  const [width, setWidth] = useState(Math.min(maxWidth, window.innerWidth));
+  const updateSize = () => setWidth(Math.min(maxWidth, window.innerWidth));
+  useEffect(() => (window.onresize = updateSize), []);
+  
+  const height = Math.max(100, width * 117 / maxWidth);
+
   return (
     <div className="header">
       <h1 className="header__title">{title}</h1>
       <svg
-        width={1439}
-        height={117}
+        width={width}
+        height={height}
         viewBox="0 0 1439 117"
         xmlns="http://www.w3.org/2000/svg"
         className="header__background"
