@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import MicrophoneIcon from './MicrophoneIcon';
 import Header from './Header';
-import styles from '../styles.module.css';
+import Microphone from '../images/microphone.svg';
+import Play from '../images/play.png';
 const audioType = "audio/ogg";
 
-function Recorder({ soundClass, soundCategory }) {
+function Recorder({ soundClass, soundCategory, nextStep }) {
   const mediaRecorder = useRef(null);
   const [time, setTime] = useState(5);
   const [recording, setRecording] = useState(false);
-  const [mediaNotFound, setMediaNotFound] = useState(false);
-  const [audioBlob, setAudioBlob] = useState(null);
-  const [audioURL, setAudioURL] = useState(null);
 
   const startTimer = () => {
     const interval = setInterval(
@@ -30,10 +27,12 @@ function Recorder({ soundClass, soundCategory }) {
   }
 
   const startRecording = (e) => {
-    e.preventDefault();
-    mediaRecorder.current.start();
-    setRecording(true);
-    startTimer();
+    if (!recording) {
+      e.preventDefault();
+      mediaRecorder.current.start();
+      setRecording(true);
+      startTimer();
+    }
   }
 
   const stopRecording = () => {
@@ -45,34 +44,9 @@ function Recorder({ soundClass, soundCategory }) {
   }
 
   const saveAudio = (chunks) => {
-    const blob = new Blob([chunks], { type: audioType });
-    const URL = window.URL.createObjectURL(blob);
-    setAudioBlob(blob);
-    setAudioURL(URL);
-  }
-
-  const handleReset = () => {
-    setRecording(false);
-    setMediaNotFound(false);
-    setAudioBlob(null);
-    setAudioURL(null);
-    setTime(5);
-  }
-
-  const handleUpload = () => {
-    var reader = new FileReader();
-    reader.readAsDataURL(audioBlob);
-    reader.onloadend = () => {
-      const base64 = reader.result.split(',')[1];
-      fetch('http://predict-ml.carrasco.uruit.com/audio/classification/predict/e3bdc8f8-9f9c-11eb-a09d-865c7b2bf2ae', {
-        method: 'POST',
-        headers: {
-          'accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ format: 'ogg', base64_audio: base64 }),
-      });
-    }
+    const audioBlob = new Blob([chunks], { type: audioType });
+    const audioURL = window.URL.createObjectURL(audioBlob);
+    nextStep({ audioBlob, audioURL });
   }
 
   useEffect(() => {
@@ -84,7 +58,6 @@ function Recorder({ soundClass, soundCategory }) {
           saveAudio(e.data);
         };
       } else {
-        setMediaNotFound(true);
         console.log("Media Devices will work only with SSL...");
       }
     }
@@ -96,59 +69,23 @@ function Recorder({ soundClass, soundCategory }) {
     <div className="game-screen">
       <Header title={soundCategory.label} color={soundCategory.color} />
       <div className="record">
+        {recording && (
+          <div className="record__timer">
+            <span>{time}</span>
+          </div>
+        )}
         Try to imitate the sound of a <br />
-        <span className="record__class">{soundClass.label}</span>
-      </div>
-      <div className={styles.recorder_box}>
-        <div className={styles.recorder_box_inner}>
-          {!mediaNotFound ? (
-            <div className={styles.record_section}>
-              <div className={styles.btn_wrapper}>
-                <button
-                  onClick={handleUpload}
-                  className={`${styles.btn} ${styles.upload_btn}`}
-                >
-                  Upload
-                </button>
-                <button
-                  onClick={handleReset}
-                  className={`${styles.btn} ${styles.clear_btn}`}
-                >
-                  Clear
-                </button>
-              </div>
-              <div className={styles.duration_section}>
-                <div className={styles.audio_section}>
-                  {audioURL !== null && (
-                    <audio controls>
-                      <source src={audioURL} type="audio/ogg" />
-                    </audio>
-                  )}
-                </div>
-                <div className={styles.duration}>
-                  <span className={styles.mins}>
-                    {time}
-                  </span>
-                </div>
-              </div>
-              {!recording && (
-                <a
-                  onClick={startRecording}
-                  href=" #"
-                  className={styles.mic_icon}
-                >
-                  <span className={styles.microphone_icon_sec}>
-                    <MicrophoneIcon />
-                  </span>
-                </a>
-              )}
-            </div>
-          ) : (
-            <p style={{ color: "#fff", marginTop: 30, fontSize: 25 }}>
-              Oh no! Seems like your browser doesn't support audio recording :(
-            </p>
-          )}
+        <div className="record__class">
+          <span>{soundClass.label}</span>
         </div>
+        <button className={`record__button ${recording ? 'record__button--active' : ''}`} onClick={startRecording}>
+          <img src={Microphone} alt="mic" />
+        </button>
+        {/* {audioURL && (
+          <button className="record__button playback__button" onClick={handlePlayback}>
+            <img className="playback__icon" src={Play} alt="play" />
+          </button>
+        )} */}
       </div>
     </div>
   );

@@ -32,7 +32,7 @@ button {
   position: relative;
   display: flex;
   justify-content: center;
-  height: 200px;
+  height: 180px;
 }
 
 .footer__image {

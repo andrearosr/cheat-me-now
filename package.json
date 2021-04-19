@@ -7,6 +7,7 @@
     "react-custom-roulette": "^1.1.8",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "react-spinners": "^0.10.6",
     "react-voice-recorder": "^2.0.9"
   },
   "scripts": {
