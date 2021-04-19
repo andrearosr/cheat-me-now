@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from './Header';
 import Microphone from '../images/microphone.svg';
-import Play from '../images/play.png';
 const audioType = "audio/ogg";
 
 function Recorder({ soundClass, soundCategory, nextStep }) {
@@ -70,7 +69,7 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
       <Header title={soundCategory.label} color={soundCategory.color} />
       <div className="record">
         {recording && (
-          <div className="record__timer">
+          <div className="record__title">
             <span>{time}</span>
           </div>
         )}
@@ -81,11 +80,6 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
         <button className={`record__button ${recording ? 'record__button--active' : ''}`} onClick={startRecording}>
           <img src={Microphone} alt="mic" />
         </button>
-        {/* {audioURL && (
-          <button className="record__button playback__button" onClick={handlePlayback}>
-            <img className="playback__icon" src={Play} alt="play" />
-          </button>
-        )} */}
       </div>
     </div>
   );
