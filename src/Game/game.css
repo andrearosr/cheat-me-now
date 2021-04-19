@@ -147,6 +147,13 @@
   margin: 15px 0 70px;
 }
 
+.record__predicted-class {
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 28px;
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+}
+
 .record__title {
   position: absolute;
   top: 115px;
@@ -171,6 +178,10 @@
   text-shadow: 2px 2px rgba(0,0,0,0.5);
   text-transform: uppercase;
   color: rgb(111,191,39);
+}
+
+.record__score--wrong {
+  color: rgb(224,65,64);
 }
 
 .record__button {

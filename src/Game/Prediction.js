@@ -26,7 +26,10 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction, nextStep 
             <div className="record__title">
               <span>Great!</span>
             </div>
-            Your score
+            It sounds like a<br />
+            <div className="record__predicted-class">
+              <span>{predictionClass.label}</span>
+            </div>
             <div className="record__score">
               {score}%
             </div>
@@ -38,8 +41,11 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction, nextStep 
               <span>Oh no!</span>
             </div>
             It sounds like a<br />
-            <div className="record__class">
+            <div className="record__predicted-class">
               <span>{predictionClass.label}</span>
+            </div>
+            <div className="record__score record__score--wrong">
+              0%
             </div>
           </div>
         )}
