@@ -24,7 +24,7 @@ function SpinWheel({ round, coins, nextStep }) {
     const soundClass = soundClasses.find(c => c.class === categoryClasses[classIndex])
     setSpin(false);
     setTimeout(() => {
-      nextStep({ soundClass, soundCategory: soundCategories[categoryIndex] });
+      //nextStep({ soundClass, soundCategory: soundCategories[categoryIndex] });
     }, 3000);
   }
 

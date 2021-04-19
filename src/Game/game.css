@@ -105,7 +105,7 @@
 .spin-wheel__selected-category {
   position: absolute;
   z-index: 9;
-  top: -120px;
+  top: -80px;
   width: 270px;
   height: 180px;
   background-image: url(../images/selected_category.svg);
