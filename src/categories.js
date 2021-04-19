@@ -104,17 +104,17 @@ export const soundClasses = [
   },
   {
     class: 'wind',
-    label: 'Wind',
+    label: 'Wind blowing',
     emoji: '🍃',
   },
   {
     class: 'birds',
-    label: 'Chirping birds',
+    label: 'Bird chirping',
     emoji: '🐦',
   },
   {
     class: 'water',
-    label: 'Water drops',
+    label: 'Water droplet',
     emoji: '💧',
   },
 ];

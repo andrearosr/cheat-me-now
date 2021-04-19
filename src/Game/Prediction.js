@@ -11,6 +11,7 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction }) {
 
   const win = prediction.result === soundClass.class;
   const predictionClass = soundClasses.find(c => c.class === prediction.result);
+  const score = Math.round(prediction.confidence_score * 100);
 
   return (
     <div className="game-screen">
@@ -19,7 +20,7 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction }) {
         {win && (
           <>
             Your score
-            {prediction.confidence_score}
+            {score}%
           </>
         )}
         {!win && (
@@ -29,7 +30,7 @@ function Prediction({ soundCategory, soundClass, audioURL, prediction }) {
             </div>
             It sounds like a<br />
             <div className="record__class">
-              <span>{predictionClass.class}</span>
+              <span>{predictionClass.label}</span>
             </div>
           </>
         )}
