@@ -3,7 +3,7 @@ import MicrophoneIcon from './MicrophoneIcon';
 import styles from '../styles.module.css';
 const audioType = "audio/ogg";
 
-function Recorder() {
+function Recorder({ soundClass, soundCategory }) {
   const mediaRecorder = useRef(null);
   const [time, setTime] = useState(5);
   const [recording, setRecording] = useState(false);
@@ -92,7 +92,11 @@ function Recorder() {
   }, []);
   
   return (
-    <div className={styles.recorder_library_box}>
+    <div className="game-screen">
+      <div className="record">
+        Try to imitate the sound of a <br />
+        <span className="record__class">{soundClass.label}</span>
+      </div>
       <div className={styles.recorder_box}>
         <div className={styles.recorder_box_inner}>
           {!mediaNotFound ? (

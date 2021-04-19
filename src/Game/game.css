@@ -70,3 +70,27 @@
   text-align: center;
   padding-top: 110px;
 }
+
+.record {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 360px;
+  height: 430px;
+  background-image: url(../images/container.svg);
+  padding-top: 210px;
+
+  text-align: center;
+  color: rgb(98,98,98);
+}
+
+.record__class {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 56px;
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+  margin-top: 20px;
+  margin: auto;
+  padding-bottom: 20px;
+}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { findDOMNode } from 'react-dom';
 import { Wheel } from 'react-custom-roulette';
 import { soundCategories, soundClasses } from '../categories';
 import './game.css';
@@ -11,6 +10,9 @@ function SpinWheel({ nextStep }) {
   const [spin, setSpin] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(null);
   const [soundClass, setSoundClass] = useState(null);
+
+  const colors = soundCategories.map(cat => cat.color);
+  const category = !spin && categoryIndex !== null && soundCategories[categoryIndex];
 
   function handleSpinClick() {
     setCategoryIndex(Math.floor(Math.random() * data.length));
@@ -24,11 +26,10 @@ function SpinWheel({ nextStep }) {
     const newSoundClass = soundClasses.find(c => c.class === categoryClasses[classIndex])
     setSpin(false);
     setSoundClass(newSoundClass);
-    setTimeout(nextStep, 3000);
+    setTimeout(() => {
+      nextStep({ soundClass: newSoundClass, soundCategory: category });
+    }, 3000);
   }
-
-  const colors = soundCategories.map(cat => cat.color);
-  const category = !spin && categoryIndex !== null && soundCategories[categoryIndex];
 
   useEffect(() => {
     setTimeout(() => {
