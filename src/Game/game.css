@@ -157,6 +157,14 @@
   color: rgb(255,176,0);
 }
 
+.recording_animation {
+  display: flex;
+  align-self: center;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: rgb(98,98,98);
+}
+
 .playback__button {
   display: flex;
   align-items: center;

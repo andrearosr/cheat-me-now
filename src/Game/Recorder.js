@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ScaleLoader from "react-spinners/ScaleLoader";
 import Header from './Header';
 import Microphone from '../images/microphone.svg';
 const audioType = "audio/ogg";
@@ -14,7 +15,7 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
         setTime(time => {
           if (time === 0) {
             clearInterval(interval);
-            stopRecording();
+            //stopRecording();
             return 5;
           } else {
             return time - 1;
@@ -45,7 +46,7 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
   const saveAudio = (chunks) => {
     const audioBlob = new Blob([chunks], { type: audioType });
     const audioURL = window.URL.createObjectURL(audioBlob);
-    nextStep({ audioBlob, audioURL });
+    //nextStep({ audioBlob, audioURL });
   }
 
   useEffect(() => {
@@ -81,6 +82,13 @@ function Recorder({ soundClass, soundCategory, nextStep }) {
           <img src={Microphone} alt="mic" />
         </button>
       </div>
+      {recording && (
+        <div className="recording_animation">
+          <ScaleLoader color="rgb(226,92,173)" />
+          <ScaleLoader color="rgb(226,92,173)" />
+          <ScaleLoader color="rgb(226,92,173)" />
+        </div>
+      )}
     </div>
   );
 }
