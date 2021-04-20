@@ -3,6 +3,7 @@ import { SpinWheel } from './SpinWheel';
 import { Recorder } from './Recorder';
 import { Loading } from './Loading';
 import { Prediction } from './Prediction';
+import './game.css';
 
 function Game() {
   const [step, setStep] = useState(1);

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Wheel } from 'react-custom-roulette';
 import { soundCategories, soundClasses } from '../categories';
-import './game.css';
 
 const categoriesToWheel = () => soundCategories.map(cat => ({ option: cat.emoji }));
 
@@ -24,7 +23,7 @@ function SpinWheel({ round, coins, nextStep }) {
     const soundClass = soundClasses.find(c => c.class === categoryClasses[classIndex])
     setSpin(false);
     setTimeout(() => {
-      //nextStep({ soundClass, soundCategory: soundCategories[categoryIndex] });
+      nextStep({ soundClass, soundCategory: soundCategories[categoryIndex] });
     }, 3000);
   }
 
