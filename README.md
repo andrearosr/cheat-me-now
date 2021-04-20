@@ -1,7 +1,9 @@
 # Getting Started
 
-In the project directory, you can run:
+In the project directory, you can install dependencies using
+### `yarn install` or `npm install`
 
+Then, run:
 ### `yarn start`
 
 Runs the app in the development mode.\
