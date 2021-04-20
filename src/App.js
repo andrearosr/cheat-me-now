@@ -4,11 +4,6 @@ import { Lobby } from './Lobby/index';
 import Footer from './images/footer.svg';
 import './App.css';
 
-const states = {
-  lobby: 'game',
-  game: 'lobby',
-}
-
 function App() {
   const [state, setState] = useState('lobby');
   const [user, setUser] = useState('');
