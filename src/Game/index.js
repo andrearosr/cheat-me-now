@@ -5,7 +5,7 @@ import { Loading } from './Loading';
 import { Prediction } from './Prediction';
 import './game.css';
 
-function Game() {
+function Game({ name }) {
   const [step, setStep] = useState(1);
   const [recordClass, setRecordClass] = useState(null);
   const [recordCategory, setRecordCategory] = useState(null);
@@ -40,7 +40,7 @@ function Game() {
 
   return (
     <>
-      {step === 1 && <SpinWheel round={round} coins={coins} nextStep={goToRecord} />}
+      {step === 1 && <SpinWheel name={name} round={round} coins={coins} nextStep={goToRecord} />}
       {step === 2 && <Recorder soundClass={recordClass} soundCategory={recordCategory} nextStep={goToPredict} />}
       {step === 3 && <Loading audioBlob={recordBlob} soundCategory={recordCategory} nextStep={goToResult} />}
       {step === 4 && <Prediction audioURL={recordURL} soundCategory={recordCategory} soundClass={recordClass} prediction={recordPrediction} nextStep={goToWheel} />}

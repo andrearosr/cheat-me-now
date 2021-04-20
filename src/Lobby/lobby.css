@@ -45,6 +45,6 @@
   margin-bottom: 20px;
   border-radius: 40px;
   border: 5px solid rgba(219, 219, 219, 0.5);
-  background: linear-gradient(0deg, rgba(255,248,162,1) 0%, rgba(255,191,34,1) 50%, rgba(255,176,0,1) 100%);
+  background: linear-gradient(0deg, rgb(226,201,55) 0%, rgb(239,175,26) 50%, rgb(251,153,0) 100%);
   background-clip: padding-box;
 }

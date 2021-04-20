@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Game } from './Game/index';
 import { Lobby } from './Lobby/index';
 import Footer from './images/footer.svg';
@@ -11,16 +11,18 @@ const states = {
 
 function App() {
   const [state, setState] = useState('lobby');
+  const [user, setUser] = useState('');
 
-  const handleStartGame = () => {
+  const handleStartGame = ({ name }) => {
     setState('game');
+    setUser(name)
   }
 
   return (
     <>
       <main className="main">
         {state === 'lobby' && <Lobby startGame={handleStartGame} />}
-        {state === 'game' && <Game />}
+        {state === 'game' && <Game name={user} />}
       </main>
       <footer className="footer">
         <img className="footer__image" src={Footer} alt="footer" />

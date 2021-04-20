@@ -4,7 +4,8 @@ import { soundCategories, soundClasses } from '../categories';
 
 const categoriesToWheel = () => soundCategories.map(cat => ({ option: cat.emoji }));
 
-function SpinWheel({ round, coins, nextStep }) {
+function SpinWheel({ name, round, coins, nextStep }) {
+  console.log('name', name)
   const data = categoriesToWheel();
   const [spin, setSpin] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(null);
