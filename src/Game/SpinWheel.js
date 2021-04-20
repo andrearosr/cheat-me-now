@@ -45,6 +45,9 @@ function SpinWheel({ name, round, coins, nextStep }) {
           {coins}
         </div>
       </div>
+      <div className="name">
+        {name}
+      </div>
       <div className="spin-wheel">
         {!!category && (
           <div className="spin-wheel__selected-category">

@@ -1,3 +1,17 @@
+@keyframes wheel-bounce {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
 @keyframes bounce {
   0% {
     opacity: 0.5;
@@ -66,9 +80,29 @@
   background-image: url(../images/coins.png);
 }
 
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+
+  background-color: white;
+  width: 340px;
+  height: 60px;
+  margin-top: 30px;
+
+  color: rgb(84,175,165);
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(98,98,98);
+
+  border-radius: 20px;
+  border: 2px solid rgba(98,98,98, 0.5);
+}
+
 .spin-wheel {
   position: relative;
-  margin-top: 120px;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,8 +111,9 @@
 
 .spin-wheel__wrapper {
   position: relative;
+  transform: scale(0.8);
 
-  animation-name: bounce;
+  animation-name: wheel-bounce;
   animation-duration: 1s;
 }
 

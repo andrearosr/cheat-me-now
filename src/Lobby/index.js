@@ -5,7 +5,9 @@ function Lobby({ startGame }) {
   const [name, setName] = useState('');
 
   const handleStartGame = () => {
-    startGame({ name });
+    if (name) {
+      startGame({ name });
+    }
   }
 
   const handleChange = (e) => {
